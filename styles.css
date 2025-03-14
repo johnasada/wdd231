@@ -100,9 +100,10 @@ body {
     padding-left: 20px;
 }
 
-.baobab-img {
+.mosque-img {
     width: 100%;
     display: block;
+    border-radius: 30px;
 }
 
 .img-caption {
