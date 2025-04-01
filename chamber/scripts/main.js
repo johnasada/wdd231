@@ -227,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const businesses = [
     {
         name: "Summit Outdoor Gear",
-        address: "40 Accra Street, Your Town",
+        address: "40 Accra Street, Abuja",
         phone: "+234 123-4567",
         website: "https://summitoutdoor.com",
         image: "images/businesses/outdoor.jpg",
