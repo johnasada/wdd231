@@ -223,3 +223,184 @@ const weatherDisplay = {
 document.addEventListener('DOMContentLoaded', () => {
     weatherDisplay.init();
 });
+// Business Directory Data
+const businesses = [
+    {
+        name: "Summit Outdoor Gear",
+        address: "40 Accra Street, Your Town",
+        phone: "+234 123-4567",
+        website: "https://summitoutdoor.com",
+        image: "images/businesses/outdoor.jpg",
+        category: "retail",
+        description: "Your one-stop shop for all outdoor adventure equipment and apparel."
+    },
+    {
+        name: "Pine Valley Café",
+        address: "456 Abacha Road, Abuja",
+        phone: "+234 234-5678",
+        website: "https://pinevalleycafe.com",
+        image: "images/businesses/cafe.jpg",
+        category: "restaurant",
+        description: "Locally-sourced ingredients in a cozy atmosphere. Famous for our homemade pies!"
+    },
+    {
+        name: "Horizon Accounting",
+        address: "789 Business Plaza, Suite 101, Abuja",
+        phone: "+234 345-6789",
+        website: "https://horizonaccounting.com",
+        image: "images/businesses/finance.jpg",
+        category: "service",
+        description: "Full-service accounting and tax preparation for businesses and individuals."
+    },
+    {
+        name: "Green Valley Landscaping",
+        address: "32 Garden Lane, Abuja",
+        phone: "+234 456-7890",
+        website: "https://greenvalleylandscaping.com",
+        image: "images/businesses/land-scaping.jpg",
+        category: "service",
+        description: "Professional landscaping services with sustainable practices."
+    },
+    {
+        name: "Community Youth Center",
+        address: "20 Hope Street, Abuja",
+        phone: "+234 567-8901",
+        website: "https://communityyouth.org",
+        image: "images/businesses/youth.jpg",
+        category: "nonprofit",
+        description: "Providing programs and activities for local youth since 1995."
+    },
+    {
+        name: "Peak Performance Physical Therapy",
+        address: "64 Health Way, Abuja",
+        phone: "+234 678-9012",
+        website: "https://peakperformancept.com",
+        image: "images/businesses/pt.jpg",
+        category: "health",
+        description: "Helping you recover and reach your physical potential."
+    },
+    {
+        name: "Main Street Books",
+        address: "87 Downtown Plaza, Abuja",
+        phone: "+234 789-0123",
+        website: "https://mainstreetbooks.com",
+        image: "images/businesses/books.jpg",
+        category: "retail",
+        description: "Independent bookstore featuring local authors and book clubs."
+    },
+    {
+        name: "Blue Sky Dental",
+        address: "53 Mpape, Abuja",
+        phone: "+234 890-1234",
+        website: "https://blueskydental.com",
+        image: "images/businesses/dentist.jpg",
+        category: "health",
+        description: "Comprehensive dental care for the whole family."
+    },
+    {
+        name: "The Rustic Table",
+        address: "159 Gwarimpa Rd, Abuja",
+        phone: "+234 901-2345",
+        website: "https://therustictable.com",
+        image: "images/businesses/restaurant.jpg",
+        category: "restaurant",
+        description: "Farm-to-table dining featuring seasonal, locally-sourced ingredients."
+    }
+];
+
+// DOM Elements
+const directoryContainer = document.getElementById('directory-container');
+const gridViewBtn = document.getElementById('grid-view');
+const listViewBtn = document.getElementById('list-view');
+const categoryFilter = document.getElementById('category-filter');
+const searchInput = document.getElementById('search-input');
+
+// Initialize Directory
+function initDirectory() {
+    displayBusinesses(businesses);
+    
+    // Event Listeners
+    gridViewBtn.addEventListener('click', () => {
+        directoryContainer.classList.remove('directory-list');
+        directoryContainer.classList.add('directory-grid');
+        gridViewBtn.classList.add('active');
+        listViewBtn.classList.remove('active');
+    });
+    
+    listViewBtn.addEventListener('click', () => {
+        directoryContainer.classList.remove('directory-grid');
+        directoryContainer.classList.add('directory-list');
+        listViewBtn.classList.add('active');
+        gridViewBtn.classList.remove('active');
+    });
+    
+    categoryFilter.addEventListener('change', filterBusinesses);
+    searchInput.addEventListener('input', filterBusinesses);
+}
+
+// Display Businesses
+function displayBusinesses(businessArray) {
+    directoryContainer.innerHTML = '';
+    
+    if (businessArray.length === 0) {
+        directoryContainer.innerHTML = '<p class="no-results">No businesses match your search criteria.</p>';
+        return;
+    }
+    
+    businessArray.forEach(business => {
+        const businessCard = document.createElement('div');
+        businessCard.className = 'business-card';
+        
+        // Format category for display
+        const categoryDisplay = {
+            'retail': 'Retail',
+            'restaurant': 'Restaurant',
+            'service': 'Service',
+            'nonprofit': 'Non-Profit',
+            'health': 'Health & Wellness'
+        };
+        
+        businessCard.innerHTML = `
+            <img src="${business.image}" alt="${business.name}" loading="lazy">
+            <div class="card-content">
+                <span class="category">${categoryDisplay[business.category]}</span>
+                <h3>${business.name}</h3>
+                <p class="description">${business.description}</p>
+                <p class="address">${business.address}</p>
+                <p class="phone">${business.phone}</p>
+                <p class="website">Website: <a href="${business.website}" target="_blank">${business.website.replace(/^https?:\/\//, '')}</a></p>
+            </div>
+        `;
+        
+        directoryContainer.appendChild(businessCard);
+    });
+}
+
+// Filter Businesses
+function filterBusinesses() {
+    const category = categoryFilter.value;
+    const searchTerm = searchInput.value.toLowerCase();
+    
+    const filtered = businesses.filter(business => {
+        // Category filter
+        if (category !== 'all' && business.category !== category) {
+            return false;
+        }
+        
+        // Search term filter
+        if (searchTerm) {
+            return (
+                business.name.toLowerCase().includes(searchTerm) ||
+                business.description.toLowerCase().includes(searchTerm) ||
+                business.category.toLowerCase().includes(searchTerm)
+            );
+        }
+        
+        return true;
+    });
+    
+    displayBusinesses(filtered);
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', initDirectory);

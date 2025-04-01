@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Directory of local businesses and organizations in our community"
+    />
+    <title>Business Directory | Your Town Chamber of Commerce</title>
+    <link rel="stylesheet" href="styles/base.css" />
+    <link rel="stylesheet" href="styles/layout.css" />
+    <link rel="stylesheet" href="styles/directory.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <div class="logo">
+          <img src="images/cantral.jpg" alt="Chamber Logo" />
+          <h1>Your Town Chamber of Commerce</h1>
+        </div>
+        <nav>
+          <button id="hamburger">☰</button>
+          <ul id="primaryNav">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="discover.html">Discover</a></li>
+            <li class="active"><a href="directory.html">Directory</a></li>
+            <li><a href="join.html">Join</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="directory-main">
+      <h2>Business Directory</h2>
+
+      <div class="directory-controls">
+        <div class="view-toggle">
+          <button id="grid-view" class="active">Grid View</button>
+          <button id="list-view">List View</button>
+        </div>
+        <div class="filter-controls">
+          <select id="category-filter">
+            <option value="all">All Categories</option>
+            <option value="retail">Retail</option>
+            <option value="restaurant">Restaurants</option>
+            <option value="service">Services</option>
+            <option value="nonprofit">Non-Profit</option>
+            <option value="health">Health & Wellness</option>
+          </select>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search businesses..."
+          />
+        </div>
+      </div>
+
+      <div id="directory-container" class="directory-grid">
+        <!-- Businesses will be loaded here by JavaScript -->
+      </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="contact-info">
+              <h3>Contact Us</h3>
+              <p>40 Accra Street, Abuja, Zone 5</p>
+              <p>abujachambercom@gmail.com</p>
+              <p>+2348111665753</p>
+            </div>
+        <div class="social-media">
+            <a href="#"><img src="images/fb-icon.png" alt="Facebook" /></a>
+            <a href="#"><img src="images/twitter.png" alt="Twitter" /></a>
+            <a href="#"><img src="images/linkedin.png" alt="LinkedIn" /></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="currentyear"></span> Abuja Chamber of Commerce</p>
+        <p>Last Modified: <span id="lastmodified"></span></p>
+      </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/directory.js"></script>
+  </body>
+</html>
