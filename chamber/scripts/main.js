@@ -307,6 +307,85 @@ const businesses = [
         description: "Farm-to-table dining featuring seasonal, locally-sourced ingredients."
     }
 ];
+// Join Page Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Set current year and last modified date
+    document.getElementById('currentyear').textContent = new Date().getFullYear();
+    document.getElementById('lastmodified').textContent = document.lastModified;
+    
+    // Mobile menu toggle
+    document.getElementById('hamburger').addEventListener('click', function() {
+        const nav = document.getElementById('primaryNav');
+        nav.classList.toggle('show');
+        this.textContent = nav.classList.contains('show') ? '✕' : '☰';
+    });
+    
+    // Form handling
+    const joinForm = document.getElementById('join-form');
+    const membershipLevel = document.getElementById('membership-level');
+    const additionalInfo = document.getElementById('additional-info');
+    
+    // Show additional info when membership level is selected
+    membershipLevel.addEventListener('change', function() {
+        if (this.value) {
+            additionalInfo.classList.remove('hidden');
+        } else {
+            additionalInfo.classList.add('hidden');
+        }
+    });
+    
+    // Set timestamp when form is submitted
+    joinForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Set timestamp
+        document.getElementById('timestamp').value = new Date().toISOString();
+        
+        // Form validation
+        if (!this.checkValidity()) {
+            // Handle invalid form
+            alert('Please fill out all required fields correctly.');
+            return;
+        }
+        
+        // Collect form data
+        const formData = new FormData(this);
+        const formObject = {};
+        formData.forEach((value, key) => {
+            formObject[key] = value;
+        });
+        
+        // In a real application, you would send this data to a server
+        console.log('Form submitted:', formObject);
+        
+        // Show success message
+        alert('Thank you for your application! We will review it and contact you soon.');
+        this.reset();
+        additionalInfo.classList.add('hidden');
+        
+        // Store in localStorage (for demo purposes)
+        storeApplication(formObject);
+    });
+    
+    // Phone number formatting
+    const phoneInput = document.getElementById('phone');
+    phoneInput.addEventListener('input', function(e) {
+        // Format phone number as (XXX) XXX-XXXX
+        const numbers = this.value.replace(/\D/g, '');
+        const char = {0:'(',3:') ',6:' -'};
+        this.value = '';
+        for (let i = 0; i < numbers.length; i++) {
+            this.value += (char[i]||'') + numbers[i];
+        }
+    });
+});
+
+// Store application in localStorage (for demo purposes)
+function storeApplication(formData) {
+    let applications = JSON.parse(localStorage.getItem('membershipApplications')) || [];
+    applications.push(formData);
+    localStorage.setItem('membershipApplications', JSON.stringify(applications));
+}
 
 // DOM Elements
 const directoryContainer = document.getElementById('directory-container');

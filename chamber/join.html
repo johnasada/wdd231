@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Join the Your Town Chamber of Commerce to grow your business and connect with the community"
+    />
+    <title>Join | Abuja Chamber of Commerce</title>
+    <link rel="stylesheet" href="styles/base.css" />
+    <link rel="stylesheet" href="styles/layout.css" />
+    <link rel="stylesheet" href="styles/join.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <div class="logo">
+          <img src="images/cantral.jpg" alt="Chamber Logo" />
+          <h1>Abuja Chamber of Commerce</h1>
+        </div>
+        <nav>
+          <button id="hamburger">☰</button>
+          <ul id="primaryNav">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="discover.html">Discover</a></li>
+            <li><a href="directory.html">Directory</a></li>
+            <li class="active"><a href="join.html">Join</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="join-main">
+      <h2>Join the Chamber</h2>
+
+      <div class="join-container">
+        <section class="membership-benefits">
+          <h3>Membership Benefits</h3>
+          <p>
+            Joining the Abuja Chamber of Commerce provides numerous benefits to
+            help your business grow and thrive in our community:
+          </p>
+
+          <div class="benefits-grid">
+            <div class="benefit-card">
+              <img src="images/icons/network.png" alt="Networking" />
+              <h4>Networking</h4>
+              <p>
+                Connect with other local businesses at our monthly events and
+                mixers.
+              </p>
+            </div>
+            <div class="benefit-card">
+              <img src="images/icons/visibility.png" alt="Visibility" />
+              <h4>Visibility</h4>
+              <p>Get featured in our directory and promotional materials.</p>
+            </div>
+            <div class="benefit-card">
+              <img src="images/icons/advocacy.png" alt="Advocacy" />
+              <h4>Advocacy</h4>
+              <p>
+                We represent business interests at local government meetings.
+              </p>
+            </div>
+            <div class="benefit-card">
+              <img src="images/icons/discount.png" alt="Discounts" />
+              <h4>Discounts</h4>
+              <p>Access member-only discounts on services and products.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="membership-levels">
+          <h3>Membership Levels</h3>
+
+          <div class="levels-container">
+            <div class="level-card">
+              <h4>Non-Profit</h4>
+              <p class="price">₦50,000/year</p>
+              <ul>
+                <li>Basic business listing in directory</li>
+                <li>Access to member resources</li>
+                <li>Monthly newsletter</li>
+                <li>1 free training session/year</li>
+              </ul>
+            </div>
+
+            <div class="level-card featured">
+              <div class="featured-badge">Most Popular</div>
+              <h4>Silver</h4>
+              <p class="price">₦100,000/year</p>
+              <ul>
+                <li>Everything in Non-Profit</li>
+                <li>Enhanced directory listing</li>
+                <li>Social media shoutouts</li>
+                <li>4 training sessions/year</li>
+                <li>2 event tickets/month</li>
+              </ul>
+            </div>
+
+            <div class="level-card">
+              <h4>Gold</h4>
+              <p class="price">₦200,000/year</p>
+              <ul>
+                <li>Everything in Silver</li>
+                <li>Premium directory placement</li>
+                <li>Featured in publications</li>
+                <li>Unlimited training sessions</li>
+                <li>Sponsorship opportunities</li>
+                <li>Advertising discounts</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="membership-form">
+          <h3>Application Form</h3>
+          <form id="join-form">
+            <div class="form-group">
+              <label for="first-name">First Name*</label>
+              <input type="text" id="first-name" name="first-name" required />
+            </div>
+
+            <div class="form-group">
+              <label for="last-name">Last Name*</label>
+              <input type="text" id="last-name" name="last-name" required />
+            </div>
+
+            <div class="form-group">
+              <label for="title">Title/Position</label>
+              <input
+                type="text"
+                id="title"
+                name="title"
+                pattern="[A-Za-z\s\-]{7,}"
+              />
+              <small class="hint"
+                >Minimum 7 characters, letters and hyphens only</small
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email*</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="your@email.com"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone*</label>
+              <input type="tel" id="phone" name="phone" required />
+            </div>
+
+            <div class="form-group">
+              <label for="business-name">Business/Organization Name*</label>
+              <input
+                type="text"
+                id="business-name"
+                name="business-name"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="business-description">Business Description</label>
+              <textarea
+                id="business-description"
+                name="business-description"
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="membership-level">Membership Level*</label>
+              <select id="membership-level" name="membership-level" required>
+                <option value="">Select a level</option>
+                <option value="nonprofit">Non-Profit ($100/year)</option>
+                <option value="silver">Silver ($250/year)</option>
+                <option value="gold">Gold ($500/year)</option>
+              </select>
+            </div>
+
+            <div class="form-group hidden" id="additional-info">
+              <h4>Additional Information</h4>
+              <div class="form-group">
+                <input
+                  type="checkbox"
+                  id="newsletter"
+                  name="newsletter"
+                  checked
+                />
+                <label for="newsletter">Subscribe to our newsletter</label>
+              </div>
+              <div class="form-group">
+                <input
+                  type="checkbox"
+                  id="directory"
+                  name="directory"
+                  checked
+                />
+                <label for="directory">Include in public directory</label>
+              </div>
+            </div>
+
+            <input type="hidden" id="timestamp" name="timestamp" />
+
+            <button type="submit" class="submit-btn">Submit Application</button>
+          </form>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div class="contact-info">
+          <h3>Contact Us</h3>
+          <p>40 Accra Street, Abuja, Zone 5</p>
+          <p>abujachambercom@gmail.com</p>
+          <p>+2348111665753</p>
+        </div>
+        <div class="social-media">
+          <a href="https://web.facebook.com/john.asada.14"
+            ><img src="images/fb-icon.png" alt="Facebook"
+          /></a>
+          <a href="#"><img src="images/twitter.png" alt="Twitter" /></a>
+          <a href="https://www.linkedin.com/in/johnasada6/"
+            ><img src="images/linkedin.png" alt="LinkedIn"
+          /></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="currentyear"></span> Abuja Chamber of Commerce</p>
+        <p>Last Modified: <span id="lastmodified"></span></p>
+      </div>
+    </footer>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/join.js"></script>
+  </body>
+</html>
